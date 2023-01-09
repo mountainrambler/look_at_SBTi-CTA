@@ -12,7 +12,7 @@ Classes:
 CTA: Class for interacting with the SBTi database.
 
 """
-
+import streamlit as st
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -88,7 +88,7 @@ class CTA:
         # Group by year and count the number of companies
         year_counts = df.groupby('year')['Company Name'].count()
         ax = year_counts.plot.bar()
-        
+        st.bar_chart(year_counts)
         # Add the value on top of each bar
         for p in ax.patches:
             ax.annotate(str(p.get_height()), (p.get_x() * 1.005, p.get_height() * 1.005))
